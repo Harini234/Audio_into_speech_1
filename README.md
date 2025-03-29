@@ -25,3 +25,6 @@ uvicorn UploadFile_API:app --reload
 For running app.py file we need to run the below command :-
 
 python3 app.py
+
+
+
