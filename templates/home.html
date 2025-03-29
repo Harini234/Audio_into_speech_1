@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<form class="form-container" id="orderForm">
+    <h1>New Order</h1>
+    <div class="input-section">
+        <div class="input-group">
+            <label for="inputaccNo">Account</label>
+            <input type="text" id="inputaccNo" placeholder="Enter Account Value">
+
+            <label for="Discretion">Discretion Exercised</label>
+            <select id="Discretion">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label for="OrderTaken">Order Taken</label>
+            <select id="OrderTaken" required onchange="toggleUpload()">
+                <option>Entering Real Time with Client</option>
+                <option>Entering Real Time with Client and FA</option>
+                <option>Already Received from Client</option>
+                <option>Already Received from FA</option>
+            </select>
+            <div id="recordButtons" style="display: none;">
+                <button type="button" onclick="startRecording()">Start</button>
+                <button type="button" onclick="stopRecording()">Stop</button>
+            </div>
+
+            <div id="uploadAudio" class="input-group" style="display: none;">
+                <label for="audioFile" class="upload-label">Upload Audio File</label>
+                <input type="file" id="audioFile" name="audiofile" accept="audio/*">
+                <button type="button" onclick="uploadAudio()">Upload Audio</button>
+            </div>
+
+
+            <label for="TransactionType">Buy/Sell</label>
+            <select id="TransactionType" required oninput="checkFormCompletion()">
+                <option>Select</option>
+                <option>Buy</option>
+                <option>Sell</option>
+            </select>
+
+            <label for="Quantity">Quantity (Shares)</label>
+            <input type="text" id="Quantity" placeholder="Enter Quantity" required oninput="checkFormCompletion()">
+
+            <label for="Symbol">Symbol</label>
+            <input type="text" id="Symbol" placeholder="Enter Symbol" required oninput="checkFormCompletion()">
+        </div>
+
+        <div class="input-group">
+            <label for="WC">WC</label>
+            <select id="WC">
+                <option></option>
+                <option>WFC</option>
+                <option>WFC2</option>
+            </select>
+
+            <label for="FA">FA</label>
+            <select id="FA">
+                <option></option>
+                <option>John</option>
+                <option>David</option>
+            </select>
+
+            <label for="INX">INX</label>
+            <select id="INX">
+                <option></option>
+                <option>H-Hold in Account</option>
+                <option>O-Other Account</option>
+            </select>
+
+            <label for="Destination">Destination</label>
+            <select id="Destination">
+                <option></option>
+                <option>United States</option>
+                <option>India</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="textarea-group">
+        <textarea id="FAPrefernce" placeholder="FA Preference" class="textarea"></textarea>
+    </div>
+
+    <div class="textarea-group">
+        <textarea id="Transcribed_text" placeholder="Transcribed text" class="textarea"></textarea>
+    </div>
+
+    <div class="button-group">
+        <button type="submit" id="Continue" class="Continue" disabled>Continue</button>
+        <button type="button" id="Cancel" class="Cancel" onclick="clearForm()">Clear</button>
+    </div>
+</form>
+
+<script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+
+{% endblock %}

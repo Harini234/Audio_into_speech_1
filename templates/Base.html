@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    
+    <title>{% block title %}Home{% endblock %}</title>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+</head>
+
+<body>
+    <div class="1_M5 bg_2C435C 1_LH27">
+        <a class="1_P12 t_FCffffff t_F24 t_Bld t_FArial t_floatl" href="/home">Home</a>
+    </div>
+
+    <div class="bg_6595D8 t_FCffffff 1_LH37 1_M5 1_TAlign_c">
+        <label class="t_FCffffff t_F24 t_Bld t_FArial 1_TAlign_c">Transcend Tool</label>
+    </div>
+
+    <div class="container">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+
+</html>
